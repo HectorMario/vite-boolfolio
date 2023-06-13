@@ -1,12 +1,24 @@
 <script >
-import axios from 'axios';
+import ProjectCard from './components/ProjectCard.vue';
+
+export default {
+  name: 'App',
+  components: {
+    ProjectCard
+  },
+  
+  data() {
+    return {
+      Projects: []
+    }
+  }
+}
 
 </script>
 
 <template>
   <div class="container">
-
-    ciao
+    <ProjectCard />
   </div>
 </template>
 
