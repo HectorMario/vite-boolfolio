@@ -1,6 +1,5 @@
 <script >
 import axios from 'axios';
-
 import ProjectCard from './components/ProjectCard.vue';
 
 export default {
@@ -11,6 +10,7 @@ export default {
 
   data() {
     return {
+      myApi: 'http://localhost:8000',
       projects: []
 
     }
@@ -20,10 +20,9 @@ export default {
   },
   methods: {
     getProject() {
-      axios
-        .get(`${this.myApi}/api/projects`)
-        .then(resp => {
+      axios.get(`${this.myApi}/api/projects`).then(resp => {
           this.projects = resp.data.results;
+          console.log(this.projects);
         })
     }
   }
@@ -33,12 +32,25 @@ export default {
 
 <template>
   <div class="container">
-    <div class="col" v-for="project in projects" :key="project.id">
-      <ProjectCard :project="projects" />
+    <div class="row row-cols-4 gap-3">
+      <div class="project col" v-for="project in projects" :key="project.id">
+        <ProjectCard :project="project" />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 @use "./style/general.scss" as *;
+
+
+.project{
+  width: calc(100% / 4 - 20px);
+  // height: 300px;
+}
+
+h6{
+  color: green;
+}
+
 </style>

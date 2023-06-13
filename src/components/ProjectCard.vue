@@ -9,7 +9,8 @@ export default {
   },
   data() {
     return {
-      myApi: 'http://127.0.0.1:8000'
+      myApi: 'http://localhost:8000', //funziona cn entrambi server php
+
 
     }
   }
@@ -18,18 +19,31 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="card h-100">
-      <img v-if="project.image" :src="`${myApi}/project_images/${project.image}`" class="card-img-top" :alt="project.title" />
-      <div v-else>
-        Nessuna immagine presente
+    <div class="card d-flex flex-column justify-content-between">
+      <figure v-if="project.image">
+        <img :src="`${myApi}/storage/${project.image}`" class="card-img-top" :alt="project.title" />
+      </figure>
+      <div v-else class="d-flex align-items-center justify-content-center">
+        <p> Nessuna immagine presente </p>
       </div>
-      <div class="card-body">
-        <h5>{{ project.title }}</h5>
+      <div class="card-body ">
+        <h6 class="my-2"><span>Titolo:</span> {{ project.title }}</h6>
+        <h6 class="my-2"><span>Descrizione:</span> {{ project.content }}</h6>
+        <!-- <p>{{ project.type }}</p> -->
       </div>
     </div>
-  </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.card{
+  background-color:rgb(10 10 10 / 75%);
+  height: 500px;
+  .card-body{
+    flex: none;
+  }
+}
+p,span{
+  color: red;
+  font-size: 1.3rem;
+}
 </style>
