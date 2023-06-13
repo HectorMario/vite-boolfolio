@@ -1,14 +1,35 @@
 <script >
+
+
 export default {
-    name: 'PostCard'}
+  name: 'ProjectCard',
+  props: {
+    project: Object
+
+  },
+  data() {
+    return {
+      myApi: 'http://127.0.0.1:8000'
+
+    }
+  }
+
+}
 </script>
 
 <template>
-    <div class="container">
-  
-      <h2>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex quaerat minima temporibus, sequi inventore porro voluptate perspiciatis odit dignissimos magni commodi amet fugit quasi numquam aliquam veritatis? Laudantium, necessitatibus accusamus!</h2>
+  <div class="container">
+    <div class="card h-100">
+      <img v-if="project.image" :src="`${myApi}/project_images/${project.image}`" class="card-img-top" :alt="project.title" />
+      <div v-else>
+        Nessuna immagine presente
+      </div>
+      <div class="card-body">
+        <h5>{{ project.title }}</h5>
+      </div>
     </div>
-  </template>
+  </div>
+</template>
 
 <style lang="scss">
 </style>
