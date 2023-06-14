@@ -30,10 +30,10 @@ export default {
       // Se post image inizia con https://, ritorna post.image
       // Altrimenti ritorna ${store.apiBaseUrl}/storage/${post.image} 
 
-      if (!this.myProject.image) {
+      if (!this.myProject.media_path) {
         this.isThere = true;
       } else {
-        return `${this.myApi}/storage/${this.myProject.image}`;
+        return `${this.myApi}/storage/${this.myProject.media_path}`;
       }
     }
   },
@@ -49,7 +49,7 @@ export default {
 <template>
   <div class="card d-flex flex-column" @click="hector">
 
-    <img v-show="myProject.image" :src="imgSrc" :alt="myProject.title" />
+    <img v-show="myProject.media_path" :src="imgSrc" :alt="myProject.title" />
     <h5 v-if="isThere" class="my-4 d-flex align-items-center"> IMMAGINE NON DISPONBILE</h5>
 
 

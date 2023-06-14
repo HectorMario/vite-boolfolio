@@ -14,7 +14,7 @@ export default {
 
   data() {
     return {
-      myApi: 'http://localhost:8000',
+      myApi: 'http://127.0.0.1:8000',
       projects: [],
       datiArray: {
         currentPage: 1,
