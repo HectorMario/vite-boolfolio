@@ -110,9 +110,12 @@ export default {
 
 section{
   color: rgb(153, 253, 13);
-  .project-number{
-    margin: 50px 0;
 
+  .project-number{
+    color: #e56729;
+    font-size: 1.2rem;
+    margin: 50px ;
+    padding-right: 90px;
   }
 }
 .project {
