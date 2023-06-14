@@ -36,11 +36,11 @@ export default {
           }
         })
         .then(resp => {
+          console.log(resp);
           this.projects = resp.data.results.data;
           this.currentPage = resp.data.results.current_page;
           this.lastPage = resp.data.results.last_page;
           this.totalProjects = resp.data.results.total;
-          console.log(this.projects);
         })
         .finally(() => {
           this.loading = false;
@@ -56,7 +56,7 @@ export default {
   <div class="container">
     <section v-if="!loading">
       <h1 class="text-center my-2 container ">Lista dei progetti :</h1>
-      <div class="text-end my-2 container me-4">
+      <div class="text-end container project-number me-4">
         Trovati : {{ totalProjects }} progetti
       </div>
 
@@ -72,7 +72,7 @@ export default {
       <nav class="my-5 d-flex justify-content-center" aria-label="Page navigation example">
         <ul class="pagination">
 
-          <li class="page-item" :class="{ 'disable': currentPage === 1 }">
+          <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
             <a class="page-link" href="#" @click.prevent="getProject(currentPage - 1)">Previous</a>
           </li>
 
@@ -80,7 +80,7 @@ export default {
             <a class="page-link" href="#" @click.prevent="getProject(pageNum)">{{ pageNum }}</a>
           </li>
 
-          <li class="page-item" :class="{ 'disable': currentPage === lastPage }">
+          <li class="page-item" :class="{ 'disabled': currentPage == lastPage }">
             <a class="page-link" href="#" @click.prevent="getProject(currentPage + 1)">Next</a>
           </li>
 
@@ -108,7 +108,13 @@ export default {
 @use "./style/general.scss" as *;
 @use "./style/partials/variables" as *;
 
+section{
+  color: rgb(153, 253, 13);
+  .project-number{
+    margin: 50px 0;
 
+  }
+}
 .project {
   width: calc(100% / 4 - 20px);
 }
